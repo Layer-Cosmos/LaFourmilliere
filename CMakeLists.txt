@@ -3,5 +3,5 @@ project(LaFourmilliere)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp test.cpp test.h)
 add_executable(LaFourmilliere ${SOURCE_FILES})
