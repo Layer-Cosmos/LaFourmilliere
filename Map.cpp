@@ -12,6 +12,7 @@
 #include <string>
 #include <iostream>
 #include <cmath>
+#include <typeinfo>
 
 
 
@@ -91,11 +92,16 @@ Map Map::add(IEntity *e) {
 }
 
 bool Map::think() {
-    for(auto &i : entity) {
+    /*for(auto &i : entity) {
+        i[1];
         if (typeid(*i) == typeid(Nexus)) {
             if(!((Nexus&)*i).think()){
                 return (true);
             }
+        }
+        if (typeid(*i) == typeid(Food)) {
+
+            ((Food&)*i).think();
         }
         if (typeid(*i) == typeid(Water)) {
             ((Water&)*i).think();
@@ -105,7 +111,43 @@ bool Map::think() {
                 return (true);
             }
         }
+    }*/
+    //cout << typeid(*entity[0]).name() << endl;
+    for(int i = 0; i < entity.size(); i++) {
+
+        if (typeid(*entity[i]) == typeid(Nexus)) {
+            if(!((Nexus&)*entity[i]).think()){
+                return (true);
+            }
+        }
+        if (typeid(*entity[i]) == typeid(Food)) {
+
+            ((Food&)*entity[i]).think();
+        }
+        if (typeid(*entity[i]) == typeid(Water)) {
+            ((Water&)*entity[i]).think();
+        }
+        if (typeid(*entity[i]) == typeid(Worker)) {
+            if (!((Worker&)*entity[i]).think()) {
+                return (true);
+            }
+        }
     }
     return false;
 }
+
+vector<IEntity *> Map::getEntity(const type_info &entity) {
+    vector<IEntity *> cpEntity;
+    //cout << typeid(*this->entity[2]).name() << entity.name() << endl;
+    cout << entity.name() << endl;
+    for(int i = 0; this->entity.size(); i++){
+        if(typeid(*this->entity[i]) == entity){
+            //cpEntity.push_back(this->entity[i]);
+        }
+    }
+
+    return cpEntity;
+}
+
+
 

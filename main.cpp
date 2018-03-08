@@ -10,7 +10,7 @@ int main() {
     map->startup();
     while (run){
         map->think();
-        map->draw();
+        //map->draw();
         sleep(1);
     }
 

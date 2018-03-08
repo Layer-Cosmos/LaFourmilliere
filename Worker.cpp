@@ -7,6 +7,8 @@
 #include "Food.h"
 #include "Water.h"
 #include "Seed.h"
+#include <typeinfo>
+#include <iostream>
 
 Worker::Worker(Map m, Nexus n, float x, float y) {
     this->map = m;
@@ -20,25 +22,14 @@ Worker::Worker(Map m, Nexus n, float x, float y) {
 bool Worker::think() {
     nexus.health = min(100, nexus.health + 1);
 
-    for(auto &i : map.entity) {
-        if(typeid(*i) == typeid(Food)){
-            Food f = (Food&)*i;
-            if (f.stock > 0) {
-                if (f.x == round(x) && f.y == round(y)) {
-                    f.stock -= 1;
-                    this->food = 1;
-                } else {
-                    nextPos(1, f.x, f.y);
-                }
-                return (true);
-            }
-        }
-
-        if(typeid(*i) == typeid(Water)){
-            Water w = (Water&)*i;
+    for(int i = 0; i < map.entity.size(); i++){
+        if(typeid(*map.entity[i]) == typeid(Water)){
+            std::cout << typeid(Water).name() << endl;
+            map.getEntity(typeid(Water));
+            Water w = (Water&)*map.entity[i];
             if (this->water > 0){
                 if (this->nexus.x == round(x) && this->nexus.y == round(y)) {
-                    nexus.water *= 1;
+                    nexus.water += 1;
                     this->water = 0;
                 } else {
                     nextPos(1, this->nexus.x, this->nexus.y);
@@ -56,6 +47,44 @@ bool Worker::think() {
             }
         }
     }
+    /*for(auto &i : map.entity) {
+        if(typeid(*i) == typeid(Food)){
+            Food f = (Food&)*i;
+            if (f.stock > 0) {
+                if (f.x == round(x) && f.y == round(y)) {
+                    f.stock -= 1;
+                    this->food = 1;
+                } else {
+                    nextPos(1, f.x, f.y);
+                }
+                return (true);
+            }
+        }
+
+        if(typeid(*i) == typeid(Water)){
+            std::cout << typeid(Water).name() << endl;
+            map.getEntity(typeid(Water));
+            Water w = (Water&)*i;
+            if (this->water > 0){
+                if (this->nexus.x == round(x) && this->nexus.y == round(y)) {
+                    nexus.water += 1;
+                    this->water = 0;
+                } else {
+                    nextPos(1, this->nexus.x, this->nexus.y);
+                }
+                return (true);
+            }
+            if (w.stock > 0) {
+                if (w.x == round(x) && w.y == round(y)) {
+                    w.stock -= 1;
+                    this->water = 1;
+                } else {
+                    nextPos(1, w.x, w.y);
+                }
+                return (true);
+            }
+        }
+    }*/
     nextPos(1, x + (Seed::random(20) - 10), y + (Seed::random(20) - 10));
     return (true);
 }

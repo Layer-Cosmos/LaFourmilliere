@@ -10,6 +10,7 @@
 #include "IEntity.h"
 #include <list>
 #include <vector>
+#include <typeinfo>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ public:
     vector<IEntity*> entity;
     static Map* _instance;
     Map add(IEntity *e);
+    vector<IEntity*> getEntity(const type_info & entity);
     bool think();
 
 protected:
