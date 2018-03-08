@@ -11,7 +11,7 @@ public:
     float x;
     float y;
     void nextPos(int speed, float ax, float ay);
-    virtual bool think() = 0;
+    bool think();
     void draw();
 };
 

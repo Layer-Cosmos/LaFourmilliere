@@ -3,6 +3,8 @@
 //
 
 #include "Nexus.h"
+#include "Worker.h"
+#include "Warrior.h"
 
 Nexus::Nexus(Map* m, int s, float x, float y) {
     side = s;
@@ -12,8 +14,8 @@ Nexus::Nexus(Map* m, int s, float x, float y) {
     food = 100;
     water = 100;
     health = 100;
-    nX = x;
-    nY = y;
+    this->x = x;
+    this->y = y;
 }
 
 Nexus::~Nexus() {
@@ -21,10 +23,22 @@ Nexus::~Nexus() {
 }
 
 Nexus::Nexus() {
-    nX = 0;
-    nY = 0;
+
 }
 
 bool Nexus::think() {
-    return false;
+    if (spawn > 100) {
+        map->add(new Worker(*map, *this, this->x, this->y))
+                .add(new Worker(*map, *this, this->x, this->y))
+                .add(new Warrior(*map, *this, this->x, this->y));
+        spawn = 0;
+        return (false);
+    } else {
+        if (food > 0 && water > 0) {
+            spawn += 1;
+            water -= 1;
+            food -= 1;
+        }
+    }
+    return (true);
 }

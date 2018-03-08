@@ -8,18 +8,17 @@
 
 #include "Map.h"
 #include "Entity.h"
+#include "IEntity.h"
 
-class Nexus: public Entity{
+class Nexus: public Entity, public IEntity {
 public:
     int side;
     int food;
     int water;
     int health;
-    float nX;
-    float nY;
     bool think();
     Nexus();
-    Nexus(Map*, int, float, float);
+    Nexus(Map* m, int s, float x, float y);
     ~Nexus();
 private:
     int spawn;

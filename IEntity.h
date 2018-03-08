@@ -7,7 +7,9 @@
 
 
 class IEntity {
-
+public:
+    void draw();
+    virtual bool think() = 0;
 };
 
 

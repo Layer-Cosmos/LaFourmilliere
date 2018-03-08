@@ -7,8 +7,9 @@
 
 
 #include "Entity.h"
+#include "IEntity.h"
 
-class Food: public Entity {
+class Food: public Entity, public IEntity {
 public:
     int stock;
     Food(float x, float y);

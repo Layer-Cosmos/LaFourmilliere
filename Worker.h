@@ -8,10 +8,14 @@
 
 #include "Entity.h"
 #include "Nexus.h"
+#include "IEntity.h"
 
-class Worker: public Entity {
+class Worker: public Entity, public IEntity {
 public:
     int age;
+    int water;
+    int food;
+    int salue;
     Nexus nexus;
     Worker(Map m, Nexus n, float x, float y);
     bool think();

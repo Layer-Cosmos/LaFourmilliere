@@ -6,7 +6,18 @@
 #define LAFOURMILLIERE_WARRIOR_H
 
 
-class Warrior: public Entity {
+#include "Entity.h"
+#include "Nexus.h"
+
+class Warrior: public Entity, public IEntity {
+public:
+    Nexus nexus;
+    Warrior(Map m, Nexus n , float x, float y);
+    bool think();
+
+private:
+    Map map;
+    bool attack(Entity b);
 
 };
 

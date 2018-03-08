@@ -7,6 +7,7 @@
 
 
 #include "Entity.h"
+#include "IEntity.h"
 #include <list>
 #include <vector>
 
@@ -18,8 +19,10 @@ public:
     static Map* getInstance();
     void startup();
     bool draw();
-    vector<Entity*> entity;
+    vector<IEntity*> entity;
     static Map* _instance;
+    Map add(IEntity *e);
+    bool think();
 
 protected:
 

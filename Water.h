@@ -7,8 +7,9 @@
 
 
 #include "Entity.h"
+#include "IEntity.h"
 
-class Water: public Entity {
+class Water: public Entity, public IEntity {
 public:
     int stock;
     bool think();
