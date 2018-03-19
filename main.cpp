@@ -10,7 +10,8 @@ int main() {
     map->startup();
     while (run){
         map->think();
-        //map->draw();
+        map->draw();
+        //std::cout << "Reset" << std::endl;
         sleep(1);
     }
 

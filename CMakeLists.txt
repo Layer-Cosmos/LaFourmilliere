@@ -9,5 +9,5 @@ set(CMAKE_CXX_FLAGS -m64)
 set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 
 
-set(SOURCE_FILES main.cpp test.cpp test.h Map.cpp Map.h Nexus.cpp Nexus.h Entity.cpp Entity.h IEntity.cpp IEntity.h Water.cpp Water.h Food.cpp Food.h Worker.cpp Worker.h Warrior.cpp Warrior.h Seed.cpp Seed.h)
+set(SOURCE_FILES main.cpp test.cpp test.h Map.cpp Map.h Queen.cpp Queen.h Entity.cpp Entity.h Entity.cpp Entity.h Water.cpp Water.h Food.cpp Food.h Worker.cpp Worker.h Warrior.cpp Warrior.h Seed.cpp Seed.h IEntity.cpp IEntity.h)
 add_executable(LaFourmilliere ${SOURCE_FILES})

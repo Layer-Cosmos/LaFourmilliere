@@ -1,24 +1,26 @@
 //
-// Created by Layer on 08/03/2018.
+// Created by Layer on 02/03/2018.
 //
 
 #ifndef LAFOURMILLIERE_WARRIOR_H
 #define LAFOURMILLIERE_WARRIOR_H
 
-
+#include "IEntity.h"
 #include "Entity.h"
-#include "Nexus.h"
+#include "Queen.h"
 
-class Warrior: public Entity, public IEntity {
+class Warrior: public Entity, public IEntity{
 public:
-    Nexus nexus;
-    Warrior(Map m, Nexus n , float x, float y);
+    Queen nexus;
+    Warrior(Map* m, Queen n , float x, float y);
+    vector<IEntity *> nearby(vector<IEntity *> cpEntity);
     bool think();
 
 private:
-    Map map;
+    Map* map;
     bool attack(Entity b);
 
+    bool attack(Warrior b);
 };
 
 

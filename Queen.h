@@ -1,5 +1,5 @@
 //
-// Created by Layer on 07/03/2018.
+// Created by Layer on 01/03/2018.
 //
 
 #ifndef LAFOURMILLIERE_NEXUS_H
@@ -8,18 +8,18 @@
 
 #include "Map.h"
 #include "Entity.h"
-#include "IEntity.h"
+#include "Entity.h"
 
-class Nexus: public Entity, public IEntity {
+class Queen: public Entity, public IEntity{
 public:
     int side;
     int food;
     int water;
     int health;
     bool think();
-    Nexus();
-    Nexus(Map* m, int s, float x, float y);
-    ~Nexus();
+    Queen();
+    Queen(Map* m, int s, float x, float y);
+    ~Queen();
 private:
     int spawn;
     Map* map;

@@ -1,5 +1,5 @@
 //
-// Created by Layer on 08/03/2018.
+// Created by Layer on 02/03/2018.
 //
 
 #ifndef LAFOURMILLIERE_SEED_H
@@ -13,6 +13,7 @@ class Seed {
 public:
     Seed();
     static int random(int i);
+    static int randomCord();
     static bool init;
 
 };

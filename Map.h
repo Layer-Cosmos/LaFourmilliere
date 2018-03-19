@@ -1,5 +1,5 @@
 //
-// Created by Layer on 07/03/2018.
+// Created by Layer on 01/03/2018.
 //
 
 #ifndef LAFOURMILLIERE_MAP_H
@@ -22,8 +22,8 @@ public:
     bool draw();
     vector<IEntity*> entity;
     static Map* _instance;
-    Map add(IEntity *e);
-    vector<IEntity*> getEntity(const type_info & entity);
+    Map add(IEntity* e);
+    vector<IEntity *> getEntity(const type_info & entity);
     bool think();
 
 protected:
